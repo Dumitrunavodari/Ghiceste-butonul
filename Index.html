@@ -13,24 +13,20 @@
   <body>
     <div class="card text-center">
       <div class="card-header">
-        <label for="inputPassword5" class="form-label">Insert number of buttons.</label>
+        <label for="ButtonsNumber" class="form-label">Insert number of buttons.</label>
         <input type="number" id="ButtonsNumber" class="form-Number"></input>
         <a href="#" class="btn btn-primary" onclick="return createButtons();">Create Buttons</a>
       </div>
-
-
     </div>
   </body>
 
   <script>
   function createButtons() {
-    var ButtonsNumber = $('#ButtonsNumber').val();
     var created = 0;
-    If ButtonsNumber <= 0 {
-      <div class="alert alert-info" role="alert">
-        Choose a positive number!
-      </div>
-    }
+    var ButtonsNumber = document.getElementById("name").innerHTML;
+    //If ButtonsNumber <= 0 {
+      alert(created);
+    //}
 
     /*if (created < ButtonsNumber) {
       </div>
