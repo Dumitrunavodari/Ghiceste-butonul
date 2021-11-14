@@ -10,8 +10,8 @@
   <body>
     <div class="card text-center">
       <div class="card-header">
-        <label for = "ButtonsNumber" class="form-label">Insert number of buttons.</label>
-        <input type = "Number" id="ButtonsNumber" class="number" min="1"/>
+        <label for = "buttonsNumber" class="form-label">Insert number of buttons.</label>
+        <input type = "Number" id="buttonsNumber" class="number" min="1"/>
         <a href="#" class="btn btn-outline-dark" onclick="return createButtons();">Create Buttons</a>
       </div>
       <div class="btn-group me-2" role="group" aria-label="First group" id="buttonsList">
@@ -19,29 +19,32 @@
       <link rel = "import" href="react-bootstrap">
     </div>
   </body>
+
   <script>
     var maximum = 0;
+
     function createButtons() {
-      var ButtonsNumber = document.getElementById("ButtonsNumber").value;
-      let luckyNumber = [];
-      luckyNumber.lenght = ButtonsNumber;
+      var buttonsNumber = document.getElementById("buttonsNumber").value;
+      let codesArray = [];
+      codesArray.lenght = buttonsNumber;
       var increase = 1;
-      const list = document.getElementById("buttonsList");
-      while (ButtonsNumber) {
-        luckyNumber [increase -1] = Math.floor((Math.random() * 10000000) + 1);
-        if (luckyNumber [increase - 1] > maximum)
-          maximum = luckyNumber [increase - 1];
-        list.innerHTML += '\
+      const buttonsList = document.getElementById("buttonsList");
+      while (buttonsNumber) {
+        codesArray [increase -1] = Math.floor((Math.random() * 10000000) + 1);
+        if (codesArray [increase - 1] > maximum)
+          maximum = codesArray [increase - 1];
+        buttonsList.innerHTML += '\
         <div class="card">\
           <div class="card-footer text-muted" id="luckyButton"> \
-            <a href="#" class="btn btn-info" id="' + luckyNumber[increase - 1] +'"  onclick="checkLucky(id);">' + increase + '</a> \
+            <a href="#" class="btn btn-info" id="' + codesArray[increase - 1] +'"  onclick="checkLucky(id);">' + increase + '</a> \
           </div> \
         </div>';
-        ButtonsNumber --;
-        increase ++;
+        --buttonsNumber;
+        ++increase;
       }
       return false;
     }
+
     function checkLucky(e) {
       if (e == maximum) {
         alert("YOU WON!!!");
