@@ -22,7 +22,6 @@
 
   <script>
     var maximum = 0;
-
     function createButtons() {
       var buttonsNumber = document.getElementById("buttonsNumber").value;
       let codesArray = [];
@@ -31,22 +30,20 @@
       const buttonsList = document.getElementById("buttonsList");
       while (buttonsNumber) {
         codesArray [increase -1] = Math.floor((Math.random() * 10000000) + 1);
-        if (codesArray [increase - 1] > maximum)
-          maximum = codesArray [increase - 1];
         buttonsList.innerHTML += '\
         <div class="card">\
           <div class="card-footer text-muted" id="luckyButton"> \
-            <a href="#" class="btn btn-info" id="' + codesArray[increase - 1] +'"  onclick="checkLucky(id);">' + increase + '</a> \
+            <a href="#" class="btn btn-info" id="' + codesArray[increase - 1] +'" onclick="checkLucky(id);">' + increase+ '</a> \
           </div> \
         </div>';
         --buttonsNumber;
         ++increase;
       }
+      maximum = Math.max(...codesArray)
       return false;
     }
-
-    function checkLucky(e) {
-      if (e == maximum) {
+    function checkLucky(id) {
+      if (id == maximum) {
         alert("YOU WON!!!");
       } else {
         alert("UPS. TRY AGAIN!");
