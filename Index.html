@@ -24,26 +24,22 @@
     var maximum = 0;
     function createButtons() {
       var buttonsNumber = document.getElementById("buttonsNumber").value;
-      let codesArray = [];
-      codesArray.lenght = buttonsNumber;
-      var increase = 1;
-      const buttonsList = document.getElementById("buttonsList");
       while (buttonsNumber) {
-        codesArray [increase -1] = Math.floor((Math.random() * 10000000) + 1);
+        var id = Math.floor(Math.random() * 10000001);
+        if (id > maximum)
+          maximum = id;
         buttonsList.innerHTML += '\
         <div class="card">\
           <div class="card-footer text-muted" id="luckyButton"> \
-            <a href="#" class="btn btn-info" id="' + codesArray[increase - 1] +'" onclick="checkLucky(id);">' + increase+ '</a> \
+            <a href="#" class="btn btn-info" id ="' + id +'" onclick="checkLucky(id);"> '+ id +'</a> \
           </div> \
         </div>';
         --buttonsNumber;
-        ++increase;
       }
-      maximum = Math.max(...codesArray)
       return false;
     }
     function checkLucky(id) {
-      if (id == maximum) {
+      if (id == maximum ) {
         alert("YOU WON!!!");
       } else {
         alert("UPS. TRY AGAIN!");
